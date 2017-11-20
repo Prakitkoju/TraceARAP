@@ -1,0 +1,181 @@
+{% extends "layout.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+  <div>
+    <h3 class="text-center">
+        {{title}}
+    </h3>
+  </div>
+
+  <button type="button" class="btn btn-default" id="reload-indledger-list-btn">
+    Reload
+  </button>
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-indledger-modal">
+    Add
+  </button>
+
+  <h4 style="display:none;" id="indledger-list-loading" class="text-muted text-center"> Loading ...</h4>
+
+  <div>
+    <table id="indledger-list-table" class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>PAN</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody></tbody>
+    </table>
+  </div>
+
+
+  <script type="text/html" id="indledger-list-item-tpl">
+    <tr>
+        <td data-content="indledger_id"></td>
+        <td data-content="full_name"></td>
+        <td data-content="address"></td>
+        <td data-content="phoneno"></td>
+        <td data-content="panno"></td>
+      
+        <td>
+          <ul class="list-inline">
+            <li>
+              <button data-template-bind='[{"attribute": "data-id", "value": "indledger_id"}]' data-target="#edit-indledger-modal" data-toggle="modal" class="btn btn-default edit-btn glyphicon glyphicon-pencil"></button>
+
+            </li>
+
+          </ul>
+        </td>
+      </tr>
+  </script>
+
+  <div id="add-indledger-modal" class="modal fade"  data-backdrop="static" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form>
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Add Individual Ledger</h4>
+          </div>
+          <div class="modal-body">
+
+            <div style="display:none" class="error-msg alert alert-danger">
+              <!-- Error desc will be added from js -->
+            </div>
+
+            <p>
+              <label>
+                Name
+                <input name="full_name" class="form-control" placeholder="Name" type="text" autofocus />
+              </label>
+            </p>
+            <p>
+              <label>
+                Address
+                <input name="address" class="form-control" placeholder="Address" type="text" autofocus />
+              </label>
+            </p>
+            <p>
+              <label>
+                Phone
+                <input name="phoneno" class="form-control" placeholder="Phone" type="text" autofocus />
+              </label>
+            </p>
+            <p>
+              <label>
+                PAN
+                <input name="panno" class="form-control" placeholder="PAN" type="text" autofocus />
+              </label>
+            </p>
+            <p>
+              <label>
+                Group Ledger Tag
+                <select id="add-ledtag" name="grpledger_id" class="form-control">
+                  <!-- <option value="A">ASSETS</option> -->
+
+                  <select>
+              </label>
+            </p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="edit-indledger-modal" class="modal fade"  data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form action="">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Update Individual Ledger</h4>
+          </div>
+          <div class="modal-body">
+
+            <input name="indledger_id" type="hidden" autofocus />
+
+            <p>
+              <label>
+                Name
+                <input name="full_name" class="form-control" placeholder="Name" type="text" autofocus />
+              </label>
+            </p>
+            <p>
+              <label>
+                Address
+                <input name="address" class="form-control" placeholder="Address" type="text" autofocus />
+              </label>
+            </p>
+            <p>
+              <label>
+                Phone
+                <input name="phoneno" class="form-control" placeholder="Phone" type="text" autofocus />
+              </label>
+            </p>
+            <!-- <p>
+              <label>
+                Group Ledger Tag
+                <select id="edit-ledtag" name="grpledtag" class="form-control">
+                  
+                  <select>
+              </label>
+            </p> -->
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+  {% endblock %}
+  
+    {% block localscript %}
+    <!-- <script src="http://localhost:4000/public/assets/jQuery3.2.1.js"></script> -->
+    <script src="http://localhost:4000/public/assets/js/indledger.js"></script>
+    {% endblock %}
+   

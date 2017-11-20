@@ -1,0 +1,21 @@
+CREATE TABLE tbltrans (
+  user_id varchar(20),
+  trans_id decimal(18,0),
+  trans_date timestamp,
+  doc_no VARCHAR(50),
+  doc_type VARCHAR(3),
+  particulars VARCHAR(100),
+  indledger_id varchar(20),
+  grpledger_id varchar(20),
+  dindledger_id varchar(20),
+  dgrpledger_id varchar(20),
+  item_id varchar(20),
+  dr_amt decimal(18,2) NOT NULL,
+  cr_amt decimal(18,2) NOT NULL,
+  is_cancel boolean,
+  cancel_by varchar(100),
+  create_date timestamp NULL,
+  modify_date timestamp NULL,
+  remarks1 VARCHAR(200) NULL,
+  remarks2 VARCHAR(200) NULL
+);

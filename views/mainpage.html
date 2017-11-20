@@ -1,0 +1,65 @@
+<!-- <link rel="stylesheet" href="http://localhost:4000/public/assets/bootstrap-3.3.7/css/bootstrap.min.css"> -->
+{% extends "layout.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+<div class="col-sm-2">
+
+</div>
+
+<div class="col-sm-8">
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h2 id="org_name" class="text-center">
+        org_name
+      </h2>
+
+      <h3 id="org_address" class="text-center">
+        org_address
+      </h3>
+      <div>
+        <p>
+          <div class="container text-center">
+            Balance Status
+          </div>
+        </p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6 text-left">
+          <p>CASH BALANCE :</p> 
+        </div>
+        <div id="cashbalance" class="col-sm-6 text-right">
+
+          0.00
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6 text-left">
+          <p> BANK BALANCE :</p>
+        </div>
+        <div id="bankbalance" class="col-sm-6 text-right">
+
+          0.00
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="col-sm-2">
+
+
+  {% endblock %}
+
+  {% block localscript %}
+  <script src="http://localhost:4000/public/assets/js/mainpage.js"></script>
+  {% endblock %}
+  <!-- <script src="http://localhost:4000/public/assets/jQuery3.2.1.js"></script>
+      <script src="http://localhost:4000/public/assets/bootstrap-3.3.7/js/bootstrap.min.js"></script> -->

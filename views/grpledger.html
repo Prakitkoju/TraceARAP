@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+  <div>
+    <h3 class="text-center">
+        {{title}}
+    </h3>
+  </div>
+
+  <button type="button" class="btn btn-default" id="reload-grpledger-list-btn">
+    Reload
+  </button>
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-grpledger-modal">
+    Add
+  </button>
+
+  <h4 style="display:none;" id="grpledger-list-loading" class="text-muted text-center"> Loading ...</h4>
+  
+    <div>
+      <table id="grpledger-list-table" class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+  
+        <tbody></tbody>
+      </table>
+    </div>
+
+
+  <script type="text/html" id="grpledger-list-item-tpl">
+    <tr>
+        <td data-content="grpledger_id"></td>
+        <td data-content="name"></td>
+        <td data-content="type"></td>
+      
+        <td>
+          <ul class="list-inline">
+            <li>
+              <button data-template-bind='[{"attribute": "data-id", "value": "grpledger_id"}]' data-target="#edit-grpledger-modal" data-toggle="modal" class="btn btn-default edit-btn glyphicon glyphicon-pencil"></button>
+
+            </li>
+
+          </ul>
+        </td>
+      </tr>
+  </script>
+
+
+  <div id="add-grpledger-modal" class="modal fade"  data-backdrop="static" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form>
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Add Group Ledger</h4>
+          </div>
+          <div class="modal-body">
+
+            <div style="display:none" class="error-msg alert alert-danger">
+              <!-- Error desc will be added from js -->
+            </div>
+
+            <p>
+              <label>
+                Name
+                <input name="name" class="form-control" placeholder="Name" type="text" autofocus />
+              </label>
+            </p>
+
+            <p>
+                <label>
+                  Account Type
+            <select id="ledtype" name = "type" class="form-control">
+              <option value="A">ASSETS</option>
+              <option value="L">LIABILITIES</option>
+              <option value="I">INCOME</option>
+              <option value="E">EXPENSES</option>
+              <select>
+                </label>
+                </p>
+                
+                <p>
+                  <label>
+                    Have Individual Ledger
+                    <select id="subled" name = "have_subledger" class="form-control">
+                        <option value="Y">YES</option>
+                        <option value="N">NO</option>
+                        <select>
+                  </label>
+                </p>
+                <!-- <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">ASSETS</button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">LIABILITIES</a></li>
+                    <li><a href="#">INCOME</a></li>
+                    <li><a href="#">EXPENSES</a></li>
+                  </ul>
+                </div> -->
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="edit-grpledger-modal" class="modal fade"  data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form action="">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Update Group Ledger</h4>
+          </div>
+          <div class="modal-body">
+
+            <input name="grpledger_id" type="hidden" autofocus />
+
+            <p>
+              <label>
+                Name
+                <input name="name" class="form-control" placeholder="Name" type="text" autofocus />
+              </label>
+            </p>
+
+         
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+  
+    {% block localscript %}
+    <script src="http://localhost:4000/public/assets/js/grpledger.js"></script>
+    {% endblock %}

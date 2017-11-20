@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+  <div>
+    <h3 class="text-center">
+        {{title}}
+    </h3>
+  </div>
+
+  <h4 style="display:none;" id="trans-search-loading" class="text-muted text-center"> Loading ...</h4>
+
+  <div>
+    <table id="trans-search-table" class="table">
+      <thead>
+        <tr>
+      
+          <th>Individual Ledger</th>
+          <th>Group Ledger</th>
+          <th>Debit Amount</th>
+          <th>Credit Amount</th>
+        </tr>
+      </thead>
+
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script type="text/html" id="trans-search-item-tpl">
+    <tr>
+        <td data-content="indledger"></td>
+        <td data-content="grpledger"></td>
+        <td data-content="dr_amt"></td>
+        <td data-content="cr_amt"></td>
+      
+      </tr>
+    </script>
+
+  {% endblock %}
+  
+    {% block localscript %}
+    <!-- <script src="http://localhost:4000/public/assets/jQuery3.2.1.js"></script> -->
+    <script src="http://localhost:4000/public/assets/js/search.js"></script>
+    {% endblock %}
+

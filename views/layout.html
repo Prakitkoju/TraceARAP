@@ -1,0 +1,153 @@
+<!-- {% from "macros.html" import nav_link with context %} -->
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+  <title>{% block title %}{% endblock %} - TraceARAP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <link href="http://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="http://localhost:4000/public/assets/bootstrap-3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/public/assets/css/pagination.css">
+  
+</head>
+
+<body>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+
+        <a class="navbar-brand" href="http://localhost:4000/mainpage">TraceARAP</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Maintain
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://localhost:4000/grpledger">Group Ledger</a>
+              </li>
+              <li>
+                <a href="http://localhost:4000/indledger">Individual Ledger</a>
+              </li>
+              <li>
+                <a href="http://localhost:4000/items">Items/Products</a>
+              </li>
+              <li>
+                <a href="http://localhost:4000/ledgertag">Ledger Tagging</a>
+              </li>
+              <li>
+                <a href="#">Company Info</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transactions
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://localhost:4000/receipts">Receipts</a>
+              </li>
+              <li>
+                <a href="http://localhost:4000/payments">Payments</a>
+              </li>
+              <li>
+                <a href="http://localhost:4000/sales">Sales</a>
+              </li>
+              <li>
+                  <a href="http://localhost:4000/purchases">Purchases</a>
+                </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="http://localhost:4000/jvdoc">Journal Voucher</a>
+              </li>
+              <li>
+                <a href="http://localhost:4000/openingbal">Opening Balance</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://localhost:4000/cashbook">Cash Book</a>
+              </li>
+              <li>
+                <a href="http://localhost:4000/trial">Trial Balance</a>
+              </li>
+              <li>
+                <a href="http://localhost:4000/bs">Balance Sheet</a>
+              </li>
+              <li>
+                <a href="http://localhost:4000/pl">Profit and Loss</a>
+              </li>
+              <li>
+                <a href="http://localhost:4000/gl">Ledgers</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <form id="searchform" method="GET" action="http://localhost:4000/search" class="navbar-form navbar-left">
+          <div class="form-group">
+            <input id ="searchby" name="q" type="text" class="form-control" placeholder="Search">
+          </div>
+          <button id ="searchbtn" type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prakit
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">Change Password</a>
+              </li>
+              <li>
+                <a href="#">Log Out</a>
+              </li>
+
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+
+  <!-- <div class="container"> -->
+    <!-- <br> -->
+    {% block content %}{% endblock %}
+    <!-- <br> -->
+  <!-- </div> -->
+  <!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
+  <!-- <script src="http://localhost:4000/public/assets/js/mainpage.js"></script> -->
+ 
+  <script src="http://localhost:4000/public/assets/jQuery3.2.1.js"></script>
+  <script src="http://localhost:4000/public/assets/pagination.js"></script>
+  <script src="http://localhost:4000/public/assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://localhost:4000/public/assets/jquery.template.min.js"></script>
+  <script src="http://localhost:4000/public/assets/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <!-- <script src="http://localhost:4000/public/assets/js/users.js"></script> -->
+  <script src="http://localhost:4000/public/assets/js/search.js"></script>
+  {% block localscript %}{% endblock %}
+
+
+  <!-- <script src="http://localhost:4000/public/assets/js/mainpage.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+{% extends "layout.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+  <div>
+    <h3 class="text-center">
+        {{title}}
+    </h3>
+  </div>
+
+  <button type="button" class="btn btn-default" id="reload-trans-list-btn">
+    Reload
+  </button>
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-trans-modal">
+    Add
+  </button>
+
+  <h4 style="display:none;" id="trans-list-loading" class="text-muted text-center"> Loading ...</h4>
+
+  <div>
+    <table id="trans-list-table" class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Doc No</th>
+          <th>Date</th>
+          <th>Group Ledger</th>
+          <th>Individual Ledger</th>
+          <th>Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody></tbody>
+    </table>
+  </div>
+
+
+  <script type="text/html" id="trans-list-item-tpl">
+    <tr>
+        <td data-content="trans_id"></td>
+        <td data-content="doc_no"></td>
+        <td data-content="trans_date"></td>
+        <td data-content="grpledger"></td>
+        <td data-content="indledger"></td>
+        <td data-content="cr_amt"></td>
+      
+        <td>
+          <ul class="list-inline">
+            <!-- <li>
+              <button data-template-bind='[{"attribute": "data-id", "value": "trans_id"}]' data-target="#edit-trans-modal" data-toggle="modal" class="btn btn-default edit-btn glyphicon glyphicon-pencil"></button>
+
+            </li> -->
+            <li>
+                <button data-template-bind='[{"attribute": "data-id", "value": "trans_id"}]' class="btn btn-default remove-btn glyphicon glyphicon-minus"></button>
+            </li>
+          </ul>
+        </td>
+      </tr>
+  </script>
+
+  <div id="add-trans-modal" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form>
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Add Receipts Vouchers</h4>
+          </div>
+          <div class="modal-body">
+
+            <div style="display:none" class="error-msg alert alert-danger">
+              <!-- Error desc will be added from js -->
+            </div>
+
+
+            <label>
+              Receipts Mode
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <select id="cashbanksel" name="grpledger_id" class="form-control">
+
+                      <select>
+                  </div>
+
+                </div>
+              </div>
+            </label>
+
+
+            <label>
+              Doc No
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <input name="doc_no" class="form-control" placeholder="Doc No" type="text" autofocus />
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <label>
+              Date
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <input id='datetimepicker1' class="form-control" type='text' name="trans_date" />
+                  </div>
+                </div>
+              </div>
+            </label>
+
+
+
+            <label>
+              Group Ledger
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <select id="add-ledtag" name="dgrpledger_id" class="js-example-basic-single">
+
+                      <select>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+
+            <label>
+              Individual Ledger
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <select id="add-indled" name="dindledger_id" class="js-example-basic-single">
+
+                      <select>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <label>
+              Amount
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <input id="dramt" name="dr_amt" class="form-control input-only-num" placeholder="Received Amount" type="text" />
+                  </div>
+                </div>
+              </div>
+            </label>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="edit-trans-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form action="">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Update Receipts Vouchers</h4>
+          </div>
+          <div class="modal-body">
+
+            <input name="trans_id" type="hidden" autofocus />
+
+            <p>
+              <label>
+                Name
+                <input name="name" class="form-control" placeholder="Name" type="text" autofocus />
+              </label>
+            </p>
+            <div class='input-group date'>
+              <input id='datetimepicker1' type='text' class="form-control" />
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+    {% endblock %}
+    
+      {% block localscript %}
+      <!-- <script src="http://localhost:4000/public/assets/jQuery3.2.1.js"></script> -->
+      <script src="http://localhost:4000/public/assets/js/receipts.js"></script>
+      {% endblock %}

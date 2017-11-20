@@ -1,0 +1,7 @@
+{
+  "python.pythonPath": "${workspaceRoot}/venv/bin/python2.7",
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  "python.linting.pylintEnabled": false
+}

@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TraceARAP</title>
+    <link rel="stylesheet"  href="http://localhost:4000/public/assets/bootstrap-3.3.7/css/bootstrap.min.css">
+   
+</head>
+
+<body>
+
+
+    <div class="col-sm-4">
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h1> TraceARAP </h1>
+                <p>Keep eye on your accounts</p>
+            </div>
+        </div>
+        <div>
+
+            Welcome all,
+            <p>
+                Here, you can record accounts receivable and accounts payable.
+            </p>
+        </div>
+
+    </div>
+    <div class="col-sm-4">
+        
+            <form id="signin-form" action="submit" class="form-signin" method="GET">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <input id="loginEmail" name = "email" type="email" class="form-control" placeholder="Email Address" required autofocus>
+                <input name = "password" type="password" class="form-control" placeholder="Password" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">sign in</button>
+                <div>
+                    <p>
+                        
+                    </p>
+                    <p>
+                        Signin for already exists user. 
+                    </p>
+                    <p>
+                        Sign up accounts for New user from right panel.
+                    </p>
+                </div>
+            </form>
+       
+    </div>
+    <div class="col-sm-4">
+           
+                    <form id="signup-form" action="submit" method="POST">
+                            <h2 class="form-signin-heading">For New User, Sign up</h2>
+                            <input name = "org_name" type="text" class="form-control" placeholder="Organization Name" required>
+                            <input name = "org_address" type="text" class="form-control" placeholder="Address">
+                            <input name = "user_name" type="text" class="form-control" placeholder="Username" required>
+                            <input name = "email" type="email" class="form-control" placeholder="Email Address" required>
+                            <input name = "password" type="password" class="form-control" placeholder="Password" required>
+                            <input name = "confirm_password" type="password" class="form-control" placeholder="Confirm Password" required>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">sign up</button>
+                           
+                        </form>
+
+                        <!-- <form action="%(SCRIPT_NAME)s" method="POST" enctype="multipart/form-data"> -->
+                        <form id="upload_photo" action="http://localhost:4000/api/upload" method="POST" enctype="multipart/form-data">
+                            File name: <input name="user_photo" type="file"><br>
+                            <input name="submit" type="submit">
+                            </form>
+          
+    </div>
+
+
+    <script src="http://localhost:4000/public/assets/jQuery3.2.1.js"></script>
+    <script src="http://localhost:4000/public/assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/public/assets/js/userjs.js"></script>
+   
+</body>
+
+</html>
